@@ -1,6 +1,8 @@
 int paddleWidth = 80;
 
 ball b1 = new ball();
+ball b2 = new ball();
+ball b3 = new ball();
 
 void setup(){
   size(600,600);
@@ -9,10 +11,11 @@ void setup(){
 }
 
 void draw(){
-  background(100,255,200);
+  background(100,255,200,30);
   rect(width-20,mouseY,10,80);
   b1.update();
-  ellipse(b1.ballX,b1.ballY,20,20);
+  b2.update();
+  b3.update();
 }
 
 class ball{
@@ -22,7 +25,7 @@ class ball{
   float ballSpeedY;
   
   //constructor
-  void ball(){
+  ball(){
     ballX = 50;
     ballY = 300;
     ballSpeedX = 3;
@@ -30,22 +33,22 @@ class ball{
   }
   
   void update(){
-    if(ballX < 0){ //does it hit the left side of the screen?
+    if(ballX <= 0){ //does it hit the left side of the screen?
       ballSpeedX = -ballSpeedX;
     }
   
     //if ball hits top edge
-    if(ballY < 0){
-      ballSpeedY = -ballSpeedX;
+    if(ballY <= 0){
+      ballSpeedY = abs(ballSpeedX);
     }
   
     // if ball hits top edge
-    if(ballY>height){
-      ballSpeedY = -ballSpeedX;
+    if(ballY>=height){
+      ballSpeedY = -abs(ballSpeedX);
     }
     
-    if(ballX>(width-20) && ballY > mouseY && ballY<(mouseY + paddleWidth)){
-      float angle = random(-60,60);
+    if(ballX>=(width-20) && ballY > mouseY && ballY<(mouseY + paddleWidth)){
+      float angle = random(120,240);
       ballSpeedX = 3*cos(angle);
       ballSpeedY = 3*sin(angle);
       print(sin(angle));
@@ -53,5 +56,7 @@ class ball{
     
     ballX += ballSpeedX;
     ballY += ballSpeedY;
+    fill(255,100,100);
+    ellipse(ballX,ballY,30,30);
   }
 }
