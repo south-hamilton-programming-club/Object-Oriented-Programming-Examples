@@ -1,4 +1,6 @@
-
+/*
+This primarily the work of Shawn Cornalley (Solon HS, Solon, IA) and his students.
+*/
 float R = 600; // multiplier for unit directional vector
 PMatrix3D cam;
 ArrayList s = new ArrayList();
