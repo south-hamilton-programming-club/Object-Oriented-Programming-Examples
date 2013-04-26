@@ -1,8 +1,8 @@
 
-float R = 600;
+float R = 600; // multiplier for unit directional vector
 PMatrix3D cam;
 ArrayList s = new ArrayList();
-PVector c, d, du;
+PVector c, d, du; //camera location, 
 int speed;
 int t = 15;
 boolean up = true;
@@ -50,9 +50,9 @@ void draw()
   directionalLight(t/5, 0, t, 0, -1, -1);
   
   //get vectors for mouseX and mouseY
-  cam.rotateX(-(mouseY - height / 2.0) / height / 10);
-  cam.rotateY(-(mouseX - width  / 2.0) / width  / 10);
-  PVector x = cam.mult(new PVector(1, 0, 0), new PVector(0, 0, 0));
+  cam.rotateX(-(mouseY - height / 2.0) / height / 10); //how quick to rotate world along X
+  cam.rotateY(-(mouseX - width  / 2.0) / width  / 10); //how quich to rotate world along y
+  PVector x = cam.mult(new PVector(1, 0, 0), new PVector(0, 0, 0)); // new
   PVector y = cam.mult(new PVector(0, 1, 0), new PVector(0, 0, 0)); 
 
   //create orthogonal vector to x and y called d and unit direction du
@@ -102,7 +102,7 @@ void keyPressed() {
   }
   else {
     if (key == ' ') {
-      s.add(new planet(c, du));
+      s.add(new planet(c, du)); // add planet 100 pixels infront of camera w/ radius random(5,200)
     }
   }
 }
@@ -116,7 +116,7 @@ void keyPressed() {
 void drawThrottle() {
   stroke(255);
   fill(255, 0, 0);
-  if (speed>20) speed = 20;
+  if (speed>20) speed = 20; // limits throttle
   rect(15, 15, speed*20, 30);
 }
 
