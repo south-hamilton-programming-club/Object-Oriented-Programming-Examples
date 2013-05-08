@@ -1,8 +1,6 @@
 int paddleWidth = 80;
 
 ball b1 = new ball();
-ball b2 = new ball();
-ball b3 = new ball();
 
 void setup(){
   size(600,600);
